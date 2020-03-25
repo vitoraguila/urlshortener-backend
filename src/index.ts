@@ -1,9 +1,11 @@
 import express from "express";
+import mongoDBConnect from "./database";
+import routes from "./routes";
 
 const app = express();
+mongoDBConnect();
 
-app.get("/", (req, res) => {
-  return res.send("First route");
-});
+app.use(express.json());
+app.use(routes);
 
-app.listen(3333);
+app.listen(3001);
